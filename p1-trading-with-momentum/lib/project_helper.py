@@ -1,4 +1,4 @@
-import helper
+import lib.helper as helper
 import plotly.graph_objs as go
 import plotly.offline as offline_py
 offline_py.init_notebook_mode(connected=True)
@@ -40,7 +40,7 @@ def print_dataframe(df, n_rows=10, n_columns=3):
     config = helper.generate_config()
 
     formatted_df = df.iloc[:n_rows, :n_columns]
-    formatted_df = formatted_df.applymap('{:.3f}'.format)
+    formatted_df = formatted_df.map('{:.3f}'.format)
 
     if len(df.columns) > n_columns:
         formatted_df[missing_val_str] = [missing_val_str]*len(formatted_df.index)
