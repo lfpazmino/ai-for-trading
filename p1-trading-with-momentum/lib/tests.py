@@ -151,8 +151,8 @@ def assert_output(fn, fn_inputs, fn_expected_outputs):
                     'EXPECTED Type: {}'.format(out_name, column, fn_out[column].dtype, expected_out[column].dtype)
 
             # Sort Columns
-            fn_out = fn_out.sort_index(1)
-            expected_out = expected_out.sort_index(1)
+            fn_out = fn_out.sort_index()
+            expected_out = expected_out.sort_index()
 
         if type(expected_out) in {pd.DataFrame, pd.Series}:
             assert set(fn_out.index) == set(expected_out.index), \
@@ -169,7 +169,7 @@ def assert_output(fn, fn_inputs, fn_expected_outputs):
         except TypeError:
             out_is_close = fn_out == expected_out
         else:
-            if isinstance(expected_out, collections.Iterable):
+            if isinstance(expected_out, collections.abc.Iterable):
                 out_is_close = out_is_close.all()
 
         assert out_is_close, err_message
