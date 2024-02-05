@@ -2,7 +2,7 @@ from collections import OrderedDict
 import numpy as np
 import pandas as pd
 
-from tests import generate_random_tickers, generate_random_dates, assert_output, project_test
+from lib.tests import generate_random_tickers, generate_random_dates, assert_output, project_test
 
 
 @project_test
